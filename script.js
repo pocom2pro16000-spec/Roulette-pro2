@@ -1,52 +1,38 @@
-let balance = 5000;
-let currentBet = 0;
+const grid = document.getElementById('numbers-grid');
+const redNums = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36];
 let isSpinning = false;
 
-// 1. Wheel Ghumane ka Logic
+// Numbers create karna
+for (let i = 1; i <= 36; i++) {
+    let div = document.createElement('div');
+    div.innerText = i;
+    div.className = 'num ' + (redNums.includes(i) ? 'red' : 'black');
+    div.onclick = () => placeBet(i);
+    grid.appendChild(div);
+}
+
 function spinWheel() {
-    if (isSpinning) return; // Agar pehle se ghoom raha hai toh ruko
-    
+    if (isSpinning) return;
     isSpinning = true;
+    
     const wheel = document.getElementById('wheel-img');
-    const resultDisplay = document.getElementById('result-screen');
+    const result = document.getElementById('result-screen');
     
-    // Yahan hum decide kar rahe hain ki wheel kitna ghoome (Random Deg)
-    // Professional Tip: 3600 degree matlab 10 chakkar
-    const extraDegree = Math.floor(Math.random() * 360); 
-    const totalRotation = 3600 + extraDegree; 
-    
-    wheel.style.transition = "transform 4s cubic-bezier(0.1, 0, 0.1, 1)";
-    wheel.style.transform = `rotate(${totalRotation}deg)`;
+    // 5-10 chakkar + random stop
+    const randDeg = Math.floor(Math.random() * 360) + 3600; 
+    wheel.style.transform = `rotate(${randDeg}deg)`;
+    result.innerText = "SPINNING...";
 
-    resultDisplay.innerText = "SPINNING...";
-
-    // 4 second baad result dikhao
     setTimeout(() => {
         isSpinning = false;
-        
-        // Winning Number nikalne ka math (37 numbers hote hain roulette mein)
-        const winningNumber = Math.floor(Math.random() * 37); 
-        
-        resultDisplay.innerText = "WINNING NUMBER: " + winningNumber;
-        alert("Ball landed on: " + winningNumber);
-        
-        // Reset wheel position taaki agli baar phir ghoom sake
+        const winNum = Math.floor(Math.random() * 37);
+        result.innerText = "WINNER: " + winNum;
+        // Reset rotation for next spin
         wheel.style.transition = "none";
-        wheel.style.transform = `rotate(${extraDegree}deg)`;
-    }, 4000);
+        wheel.style.transform = `rotate(${randDeg % 360}deg)`;
+        setTimeout(() => { wheel.style.transition = "transform 5s cubic-bezier(0.1, 0, 0.1, 1)"; }, 50);
+    }, 5000);
 }
 
-// 2. Bet lagane ka logic
-function placeBet(number) {
-    if (isSpinning) return;
-    alert("Bet placed on number: " + number);
-    // Yahan aap apna balance minus karne ka logic daal sakte hain
-}
-
-// 3. Chip select karne ka logic
-function selectChip(amount) {
-    currentBet = amount;
-    document.getElementById('bet').innerText = currentBet;
-    // Spin trigger karne ke liye button bhi de sakte hain ya timer se
-    spinWheel(); 
-}
+function placeBet(n) { if(!isSpinning) alert("Bet on " + n); }
+function selectChip(v) { document.getElementById('bet').innerText = v; }
