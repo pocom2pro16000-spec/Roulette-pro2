@@ -1,0 +1,30 @@
+<div class="game-container">
+    <div class="video-section">
+        <div class="wheel-container">
+            <div id="wheel" class="wheel">
+                <img src="https://i.imgur.com/K7M08Uv.png" id="wheel-img" alt="Roulette Wheel">
+                <div id="ball" class="ball"></div>
+            </div>
+            <div class="pointer">▼</div>
+        </div>
+        <div id="result-screen">PLACE YOUR BETS</div>
+    </div>
+
+    <div class="status-bar">
+        <span>₹<span id="bal">5000</span></span>
+        <span class="timer-box" id="timer">30</span>
+        <span>BET: ₹<span id="bet">0</span></span>
+    </div>
+
+    <div class="roulette-table">
+        <div class="zero-cell" onclick="placeBet(0)">0</div>
+        <div id="grid" class="numbers-grid"></div>
+    </div>
+
+    <div class="chip-bar">
+        <div class="chip c10" onclick="selectChip(10, this)">10</div>
+        <div class="chip c100" onclick="selectChip(100, this)">100</div>
+        <div class="chip c1k" onclick="selectChip(1000, this)">1K</div>
+        <div class="chip c10k" onclick="selectChip(10000, this)">10K</div>
+    </div>
+</div>
