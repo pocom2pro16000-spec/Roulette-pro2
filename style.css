@@ -1,120 +1,142 @@
+/* PURE PAGE KA SETUP */
 body {
-    background: #000;
+    background-color: #0b0e11; /* Dark background */
     color: white;
-    font-family: sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-}
-
-.casino-app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.top-section {
-    background: radial-gradient(circle, #222, #000);
-    height: 35%;
+    height: 100vh; /* Pura screen cover kare */
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
+    overflow: hidden; /* Scrollbar na aaye */
 }
 
-#wheel-img { width: 220px; }
-.pointer { position: absolute; top: 10px; color: gold; font-size: 20px; }
+/* MAIN CONTAINER (MOBILE KEY LIYE) */
+.game-container {
+    width: 100vw;
+    max-width: 380px; /* Mobile width fix */
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Sab kuch line se niche */
+    padding: 2px; /* Thoda side gap */
+    box-sizing: border-box;
+}
 
-.info-bar {
+/* 1. WHEEL SECTION (CHHOTA KIYA HAI) */
+.video-section {
+    height: 30%; /* Screen ka 30% hissa wheel ko */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 2px;
+}
+
+#wheel-img {
+    width: 180px; /* Wheel ka size chhota kiya (Pehle bada tha) */
+    height: 180px;
+    filter: drop-shadow(0 0 10px #000);
+}
+
+.pointer {
+    position: absolute;
+    top: 0px;
+    color: gold;
+    font-size: 18px;
+}
+
+#result-screen {
+    font-size: 10px; /* Text chhota kiya */
+    margin-top: -5px;
+    color: gold;
+}
+
+/* 2. STATUS BAR (BALANCE & TIMER) */
+.status-bar {
     display: flex;
     justify-content: space-between;
-    background: #111;
-    padding: 10px;
-    border-top: 2px solid #333;
+    align-items: center;
+    background-color: #1a1d23;
+    padding: 4px 8px; /* Padding kam ki */
+    font-size: 11px; /* Font size chhota */
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+.timer-box {
+    background-color: #c0392b; /* Red background */
+    padding: 1px 8px;
+    border-radius: 3px;
     font-weight: bold;
 }
 
-.timer { background: #b01c1c; padding: 0 15px; border-radius: 4px; }
-
-/* Table Layout */
-.table-container {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background: #050505;
-    flex-grow: 1;
-}
-
-.main-grid { display: flex; flex-direction: column; width: 180px; }
-
-.zero {
-    background: #27ae60;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #fff3;
-}
-
-.numbers-wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border: 1px solid #fff3;
-}
-
-.num {
-    padding: 12px 0;
-    text-align: center;
-    border: 0.5px solid #fff2;
-    font-weight: bold;
-}
-
-.red { background: #b01c1c; }
-.black { background: #1a1a1a; }
-
-.side-options {
+/* 3. ROULETTE TABLE (SUBSE ZARURI CHANGE) */
+.roulette-table {
     display: flex;
     flex-direction: column;
-    margin-right: 5px;
-}
-
-.side-btn {
-    flex: 1;
-    background: #222;
-    border: 0.5px solid #fff2;
-    width: 50px;
-    font-size: 10px;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    background: #111;
+    padding: 4px;
+    border-radius: 4px;
+    flex: 1; /* Bacha hua gap table ko mile */
+    overflow: hidden; /* Extra bahar na jaye */
 }
 
-.red-diamond { color: #e74c3c; }
-.black-diamond { color: #555; }
+.zero-cell {
+    background-color: #27ae60; /* Green 0 */
+    width: 95%;
+    padding: 6px; /* Padding kam ki */
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-bottom: 2px;
+}
 
-.columns { display: grid; grid-template-columns: repeat(3, 1fr); }
-.col-btn { background: #222; font-size: 10px; text-align: center; padding: 5px; border: 0.5px solid #fff2; }
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 line ka grid */
+    gap: 2px; /* Gap kam kiya */
+    width: 95%;
+}
 
-/* Chips */
-.chips-section {
+/* Har Number ka Box */
+.number-box {
+    padding: 8px; /* Padding kam ki taaki screen mein fit ho */
+    text-align: center;
+    font-size: 14px; /* Font thoda bada rakha taaki dikhe */
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+/* Red & Black color pattern */
+.red { background-color: #b01c1c; }
+.black { background-color: #1a1a1a; }
+
+/* 4. CHIP BAR (CHHOTA KIYA) */
+.chip-bar {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px 0;
-    background: #000;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0; /* Gap kam kiya */
+    background-color: #0b0e11;
 }
 
 .chip {
-    width: 45px;
-    height: 45px;
+    width: 35px; /* Chips chhote kiye (Pehle bade the) */
+    height: 35px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
-    border: 2px dashed #fff8;
+    font-size: 9px;
     font-weight: bold;
+    border: 2px dashed rgba(255,255,255,0.6);
 }
 
+/* Chips Colors */
 .c10 { background: #2980b9; }
 .c100 { background: #8e44ad; }
-.c1k { background: #f39c12; color: #000; }
+.c1k { background: #f39c12; color: black; }
 .c10k { background: #d35400; }
