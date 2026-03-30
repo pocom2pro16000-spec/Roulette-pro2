@@ -3,50 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Roulette Pro</title>
+    <title>Roulette Pro Max</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="casino-app">
         <div class="top-section">
-            <div class="wheel-box">
-                <img src="https://i.imgur.com/K7M08Uv.png" id="wheel-img">
+            <div class="wheel-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/European_roulette.svg/1200px-European_roulette.svg.png" id="wheel-img" alt="Wheel">
                 <div class="pointer">▼</div>
             </div>
+            <div id="result-screen">PLACE YOUR BETS</div>
         </div>
 
         <div class="info-bar">
-            <div class="balance">₹<span id="bal">5000</span></div>
+            <div>BAL: ₹<span id="bal">5000</span></div>
             <div class="timer" id="timer">30</div>
-            <div class="bet-info">BET: ₹<span id="bet">0</span></div>
+            <div>BET: ₹<span id="bet">0</span></div>
         </div>
 
-        <div class="table-container">
-            <div class="side-options">
-                <div class="side-btn">1-18</div>
-                <div class="side-btn">Even</div>
-                <div class="side-btn red-diamond">♦</div>
-                <div class="side-btn black-diamond">♦</div>
-                <div class="side-btn">Odd</div>
-                <div class="side-btn">19-36</div>
+        <div class="table-area">
+            <div class="side-bet">
+                <div class="s-btn">1-18</div>
+                <div class="s-btn" style="color:#e74c3c">♦</div>
+                <div class="s-btn">ODD</div>
             </div>
-
-            <div class="main-grid">
+            <div class="grid-main">
                 <div class="zero" onclick="placeBet(0)">0</div>
-                <div id="numbers" class="numbers-wrapper"></div>
-                <div class="columns">
-                    <div class="col-btn">2to1</div>
-                    <div class="col-btn">2to1</div>
-                    <div class="col-btn">2to1</div>
-                </div>
+                <div id="numbers-grid" class="n-grid"></div>
             </div>
         </div>
 
-        <div class="chips-section">
+        <div class="chips-row">
             <div class="chip c10" onclick="selectChip(10)">10</div>
             <div class="chip c100" onclick="selectChip(100)">100</div>
             <div class="chip c1k" onclick="selectChip(1000)">1K</div>
-            <div class="chip c10k" onclick="selectChip(10000)">10K</div>
+            <button class="spin-btn" onclick="spinWheel()">SPIN</button>
         </div>
     </div>
     <script src="script.js"></script>
